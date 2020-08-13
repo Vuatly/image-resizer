@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+    <a href="{% url 'img_resizer:img_list' %}">
+      Назад к списку
+    </a>
+    <h1>Новое изображение</h1>
+    {% if error %}
+      <p><strong>Прозошла ошибка: {{ error }}</strong></p>
+    {% endif %}
+    <form method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <input type="submit" value="Сохранить" />
+    </form>
+{% endblock content %}

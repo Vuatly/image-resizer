@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+<a href="{% url 'img_resizer:img_list' %}">Назад к списку</a>
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <input type="submit" value="Отправить" />
+</form>
+{% if error %}
+<p><strong>Произошла ошибка:</strong> {{ error }}</p>
+{% else %}
+  {% if image.resized %}
+  <img src="{{ image.resized.url }}" alt="img">
+  {% else %}
+    {% if image.file %}
+    <img src="{{ image.file.url }}" alt="image">
+    {% else %}
+    <img src="{{ image.link }}" alt="img">
+    {% endif %}
+  {% endif %}
+{% endif %}
+{% endblock content %}

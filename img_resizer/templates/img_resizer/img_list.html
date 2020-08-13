@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+
+<h2> Список изображений </h2>
+
+{% if image_list.count is 0 %}
+<p><strong>Нет доступных изображений</strong></p>
+{% else %}
+{% for image in image_list %}
+<a href="{% url 'img_resizer:img_detail' image.pk %}">{{ image.name }}</a> <br>
+{% endfor %}
+{% endif %}
+
+<a href="{% url 'img_resizer:img_create' %}">Добавить изображение</a>
+
+
+{% endblock content %}
