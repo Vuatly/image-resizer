@@ -10,13 +10,13 @@ from .utils import resize_image, get_image_from_link
 
 
 class ImageListView(ListView):
-    """Сервис, возвращающий список загруженных изображений"""
+    """Веб-сервис, возвращающий список загруженных изображений"""
     model = Image
     template_name = 'img_resizer/img_list.html'
 
 
 class ImageCreateView(CreateView):
-    """Сервис, позволяющий загружать изображение"""
+    """Веб-сервис, позволяющий загружать изображение"""
     model = Image
     form_class = ImageCreateForm
     template_name = 'img_resizer/img_create.html'
@@ -35,6 +35,8 @@ class ImageCreateView(CreateView):
 
 
 class ImageDetailView(FormMixin, DetailView):
+    """Веб-сервис, позволяющий смотреть информацию об изображении и получать
+    изображения иного размера"""
     model = Image
     template_name = 'img_resizer/img_detail.html'
     form_class = ImageEditForm
