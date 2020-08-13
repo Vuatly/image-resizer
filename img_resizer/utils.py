@@ -4,12 +4,12 @@ import cv2
 import requests
 import imghdr
 
-from .models import Image as ImageModel
+from .models import Image
 
 
 def resize_image(obj_pk, new_width, new_height):
     """Изменяет размер изображения по ширине и высоте"""
-    img_obj = ImageModel.objects.get(pk=obj_pk)
+    img_obj = Image.objects.get(pk=obj_pk)
     image = cv2.imread(img_obj.file.path)
     height, width = image.shape[:2]
 
