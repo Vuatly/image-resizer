@@ -15,11 +15,7 @@
   {% if image.resized %}
   <img src="{{ image.resized.url }}" alt="img">
   {% else %}
-    {% if image.file %}
     <img src="{{ image.file.url }}" alt="image">
-    {% else %}
-    <img src="{{ image.link }}" alt="img">
-    {% endif %}
   {% endif %}
 {% endif %}
 {% endblock content %}

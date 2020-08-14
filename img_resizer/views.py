@@ -35,6 +35,8 @@ class ImageCreateView(CreateView):
 
 
 class ImageDetailView(FormMixin, DetailView):
+    """Сервис, позволяющий смотреть информацию об изображении и получать
+    изображения иного размера"""
     model = Image
     template_name = 'img_resizer/img_detail.html'
     form_class = ImageEditForm
