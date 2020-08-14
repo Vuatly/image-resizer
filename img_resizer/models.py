@@ -20,14 +20,8 @@ class Image(models.Model):
     def save(self, *args, **kwargs):
         # При сохранении добавляем объекту имя
         if not self.name:
-            if self.file:
-                self.name = self.file.name
-            else:
-                self.name = self.link.split('/')[-1]
+            self.name = self.file.name
         super(Image, self).save(*args, **kwargs)
 
     def __str__(self):
-        if self.file:
-            return self.file.name
-        else:
-            return self.link.split('/')[-1]
+        return self.name
